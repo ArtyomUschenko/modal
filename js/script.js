@@ -10,8 +10,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
     let tab = document.querySelectorAll(".info-header-tab"), // Получаем все табы-кнопки
         info = document.querySelector(".info-header"), //Получаем родителя с табами-кнопками
-        tabContent = document.querySelectorAll(".info-tabcontent"); //Получаем весь таб-контент
-
+        tabContent = document.querySelectorAll(".info-tabcontent"), //Получаем весь таб-контент
+        btntab = document.querySelectorAll(".description-btn");
 
 
 // Цикл, который проходит по табам с индексом от 1 до 4 и меняет классы.
@@ -19,9 +19,11 @@ window.addEventListener("DOMContentLoaded", function () {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove("show");
             tabContent[i].classList.add("hide");
+            btntab[i].addEventListener("click", modalWindow);  // активируем кнопку на открытие модального окна
         }
     }
     hideTabContent(1); // Передаем 1, чтоб таб с индексом 0 отображался на странице
+    btntab[0].addEventListener("click", modalWindow); // Активируем кнопку с модальным окном на 0 табе
 
     // Передаем индекс таба, чтоб сменить класс
     function showTabContent(b) {
@@ -47,7 +49,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //----------------------------------
     // Реализация таймера
     //----------------------------------
-    let deadline = "2024-07-23";
+    let deadline = "2024-07-24";
 
     // Получаем оставшееся время и записываем данные в функцию
     function  getTimeRemaining(endtime) {
@@ -120,12 +122,23 @@ window.addEventListener("DOMContentLoaded", function () {
         overlay = document.querySelector(".overlay"), //Форма модального окна
         close = document.querySelector(".popup-close"); // Кнопка "X" закрытия модального окна
 
+
     //Вызываем модальное окно
-    more.addEventListener("click", function (event) {
+
+    // more.addEventListener("click", function (event) {
+    //     overlay.style.display = "block";
+    //     this.classList.add("more-splash"); //Анимация кнопки
+    //     document.body.style.overflow = "hidden"; //Запрещаем прокрутку страницы
+    // });
+
+    function modalWindow(event) {
         overlay.style.display = "block";
         this.classList.add("more-splash"); //Анимация кнопки
         document.body.style.overflow = "hidden"; //Запрещаем прокрутку страницы
-    });
+    }
+
+    more.addEventListener("click", modalWindow);
+
     //Закрываем модальное окно
     close.addEventListener("click", function () {
         overlay.style.display = "none";
