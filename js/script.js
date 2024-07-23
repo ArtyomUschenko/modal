@@ -123,14 +123,6 @@ window.addEventListener("DOMContentLoaded", function () {
         close = document.querySelector(".popup-close"); // Кнопка "X" закрытия модального окна
 
 
-    //Вызываем модальное окно
-
-    // more.addEventListener("click", function (event) {
-    //     overlay.style.display = "block";
-    //     this.classList.add("more-splash"); //Анимация кнопки
-    //     document.body.style.overflow = "hidden"; //Запрещаем прокрутку страницы
-    // });
-
     function modalWindow(event) {
         overlay.style.display = "block";
         this.classList.add("more-splash"); //Анимация кнопки
